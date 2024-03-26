@@ -4,8 +4,8 @@ import PromiseUtils from "./PromiseUtils";
 import StringUtils from "./StringUtils";
 
 export default class JrxUtils {
-    static readonly array = new ArrayUtils();
-    static readonly date = new DateUtils();
-    static readonly promise = new PromiseUtils();
-    static readonly string = new StringUtils();
+    static readonly array = ArrayUtils;
+    static readonly date = DateUtils;
+    static readonly promise = PromiseUtils;
+    static readonly string = StringUtils;
 }

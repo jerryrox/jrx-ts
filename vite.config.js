@@ -4,9 +4,12 @@ import { resolve } from "path";
 
 export default defineConfig({
     build: {
+        sourcemap: true,
         lib: {
             entry: resolve(__dirname, "src/main.ts"),
-            formats: ["es"],
+            name: "jrx-ts",
+            formats: ["es", "cjs", "umd"],
+            fileName: (format) => `index.${format}.js`,
         }
     },
     resolve: {
