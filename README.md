@@ -3,7 +3,7 @@
 My personal Typescript library.
 
 # Versions
-## 0.1.0 (WIP)
+## 0.1.0
 ### New features
 - Added encode/decode functions for submodels in ModelConverter.
 ### Changes
