@@ -22,7 +22,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest --coverage",
-    "publish": "yarn build && npm publish"
+    "upload": "yarn build && npm publish"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^1.4.0",
