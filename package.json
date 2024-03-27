@@ -1,6 +1,6 @@
 {
   "name": "jrx-ts",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "module": "./dist/index.es.js",
   "types": "./dist/main.d.ts",
@@ -21,7 +21,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "test": "vitest --coverage"
+    "test": "vitest --coverage",
+    "publish": "yarn build && npm publish"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^1.4.0",
