@@ -7,4 +7,7 @@ export { EventAction, EventActionT, EventActionTT } from "./data/EventAction";
 export { default as Lazy } from "./data/Lazy";
 export { default as ModelConverter } from "./data/ModelConverter";
 
-export { default as JrxUtils } from "./utils/JrxUtils";
+export { default as JrxArrayUtils } from "./utils/JrxArrayUtils";
+export { default as JrxDateUtils } from "./utils/JrxDateUtils";
+export { default as JrxPromiseUtils } from "./utils/JrxPromiseUtils";
+export { default as JrxStringUtils } from "./utils/JrxStringUtils";
