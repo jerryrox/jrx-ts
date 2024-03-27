@@ -1,4 +1,4 @@
-export default class StringUtils {
+export default class JrxStringUtils {
 
     static combine(
         segments: (string | null | undefined)[],

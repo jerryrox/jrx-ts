@@ -1,6 +1,6 @@
 type TimeUnit = "ms" | "sec" | "min" | "hr" | "day";
 
-export default class DateUtils {
+export default class JrxDateUtils {
 
     public static readonly timeUnits = ["ms", "sec", "min", "hr", "day"] as const;
     

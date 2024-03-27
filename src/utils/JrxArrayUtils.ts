@@ -1,4 +1,4 @@
-export default class ArrayUtils {
+export default class JrxArrayUtils {
     
     /**
      * Checks if two arrays are equal in reference or content.

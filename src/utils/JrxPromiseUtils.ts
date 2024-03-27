@@ -1,4 +1,4 @@
-export default class PromiseUtils {
+export default class JrxPromiseUtils {
 
     static wait(ms: number): Promise<void> {
         return new Promise((resolve) => {

@@ -1,16 +1,16 @@
 import { expect, test } from "vitest";
-import PromiseUtils from "./PromiseUtils";
+import JrxPromiseUtils from "./JrxPromiseUtils";
 
 test("Wait", async () => {
     const curTime = Date.now();
-    await PromiseUtils.wait(100);
+    await JrxPromiseUtils.wait(100);
     const diff = Date.now() - curTime;
     expect(diff).toBeGreaterThanOrEqual(100);
 });
 
 test("Interval check", async () => {
     let count = 0;
-    await PromiseUtils.intervalCheck(() => {
+    await JrxPromiseUtils.intervalCheck(() => {
         count++;
         return count >= 3;
     }, 20, 5);
@@ -20,7 +20,7 @@ test("Interval check", async () => {
 test("Interval check timeout", async () => {
     let count = 0;
     try {
-        await PromiseUtils.intervalCheck(() => {
+        await JrxPromiseUtils.intervalCheck(() => {
             count++;
             return false;
         }, 20, 5, {

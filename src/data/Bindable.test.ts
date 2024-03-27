@@ -1,6 +1,6 @@
 import { expect, test } from "vitest";
 import Bindable from "./Bindable";
-import PromiseUtils from "../utils/PromiseUtils";
+import JrxPromiseUtils from "../utils/JrxPromiseUtils";
 
 test("New bindable", async () => {
     const bindable = new Bindable<number>(42);
@@ -135,7 +135,7 @@ test("Wait for predicate with timeout", async () => {
     }).catch((e) => {
         errorMessage = e.toString();
     });
-    await PromiseUtils.wait(20);
+    await JrxPromiseUtils.wait(20);
     expect(errorMessage).toBe("Timeout");
 });
 
