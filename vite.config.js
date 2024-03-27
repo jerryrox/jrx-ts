@@ -8,7 +8,7 @@ export default defineConfig({
         lib: {
             entry: resolve(__dirname, "src/main.ts"),
             name: "jrx-ts",
-            formats: ["es", "cjs", "umd"],
+            formats: ["es"],
             fileName: (format) => `index.${format}.js`,
         }
     },

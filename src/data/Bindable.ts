@@ -1,10 +1,9 @@
-type Action<T> = (t: T) => any;
-type Predicate<T> = (t: T) => boolean;
+import { ActionT, Predicate } from "../type/JrxTypes";
 
 class ListenerInfo<T> {
 
     id: number;
-    callback: Action<T>;
+    callback: ActionT<T>;
 
     constructor() {
         this.id = 0;
@@ -64,12 +63,12 @@ export default class Bindable<T> {
         }
     }
 
-    modify(modifier: Action<T>) {
+    modify(modifier: ActionT<T>) {
         modifier(this._value);
         this.trigger();
     }
 
-    subscribe(callback: Action<T>, trigger: boolean = true): number {
+    subscribe(callback: ActionT<T>, trigger: boolean = true): number {
         const info = new ListenerInfo<T>();
         info.id = this._idIncrement++;
         info.callback = callback;
@@ -91,12 +90,12 @@ export default class Bindable<T> {
         }
     }
 
-    bind(callback: Action<T>, trigger: boolean = true): Action<T> {
+    bind(callback: ActionT<T>, trigger: boolean = true): ActionT<T> {
         this.subscribe(callback, trigger);
         return callback;
     }
 
-    unbind(callback: Action<T>): void {
+    unbind(callback: ActionT<T>): void {
         for (let i = 0; i < this._listeners.length; i++) {
             const listener = this._listeners[i];
             if (listener !== null && listener.callback === callback) {

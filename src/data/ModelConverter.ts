@@ -1,5 +1,7 @@
-export default abstract class ModelConverter<T = any> {
-    public subconverters: ModelConverter[] = [];
+import { Constructor } from "../type/JrxTypes";
+
+export default abstract class ModelConverter<T extends Object> {
+    public subconverters: ModelConverter<any>[] = [];
 
     abstract toModel(id: string, data: any): T;
 
@@ -13,6 +15,10 @@ export default abstract class ModelConverter<T = any> {
     }
 
     abstract toPlain(model: T): Record<string, any>;
+
+    toPlainWithExtra(model: T, extra: Record<string, any>): Record<string, any> {
+        return { ...this.toPlain(model), ...extra };
+    }
 
     encodeDate(value: Date): any {
         return value.toISOString();
@@ -55,11 +61,12 @@ export default abstract class ModelConverter<T = any> {
         valueDecoder: (value: any) => TValue,
         defaultValue: Record<TKey, TValue> = {} as Record<TKey, TValue>,
     ): Record<TKey, TValue> {
-        const result: Record<TKey, TValue> = {} as Record<TKey, TValue>;
         if (typeof (value) === "object") {
+            const result: Record<TKey, TValue> = {} as Record<TKey, TValue>;
             for (const key in value) {
                 result[keyDecoder(key)] = valueDecoder(value[key]);
             }
+            return result;
         }
         return defaultValue;
     }
@@ -109,5 +116,23 @@ export default abstract class ModelConverter<T = any> {
             return value;
         }
         return defaultValue;
+    }
+
+    encodeSubmodel<TSubmodel extends Object>(value: TSubmodel, type: Constructor<ModelConverter<TSubmodel>>): any {
+        for (const subconverter of this.subconverters) {
+            if (subconverter instanceof type) {
+                return subconverter.toPlain(value);
+            }
+        }
+        throw new Error(`Subconverter not defined for type ${type.name}`);
+    }
+
+    decodeSubmodel<TSubmodel extends Object>(value: any, type: Constructor<ModelConverter<TSubmodel>>): TSubmodel {
+        for (const subconverter of this.subconverters) {
+            if (subconverter instanceof type) {
+                return subconverter.toModel("", value);
+            }
+        }
+        throw new Error(`Subconverter not defined for type ${type.name}`);
     }
 }
