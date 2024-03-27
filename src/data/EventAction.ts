@@ -1,6 +1,4 @@
-type Action = () => any;
-type ActionT<T1 = any> = (t1: T1) => any;
-type ActionTT<T1 = any, T2 = any> = (t1: T1, t2: T2) => any;
+import { Action, ActionT, ActionTT } from "../type/JrxTypes";
 
 export class EventAction {
     private readonly callbacks: (Action | undefined)[] = [];
