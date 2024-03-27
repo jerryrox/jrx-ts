@@ -3,7 +3,8 @@
 My personal Typescript library.
 
 # Versions
-## 0.1.1
+## 0.1.2
+Oops, been too long since last time I made a package 😂
 ### Changes
 - Removed JrxUtils and just renamed individual utils class with Jrx prefix. This is just to make my life easier when creating variant libraries 🤷‍♂️
 
