@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { EventAction, EventActionT, EventActionTT } from "../main";
+import { EventAction } from "../main";
 
 test("No args event action", async () => {
     const eventAction = new EventAction();
@@ -19,7 +19,7 @@ test("No args event action", async () => {
 });
 
 test("1 arg event action", async () => {
-    const eventAction = new EventActionT<string>();
+    const eventAction = new EventAction<string>();
     let callCount = 0;
     let argValue = "";
     const callback = (arg: string) => {
@@ -40,7 +40,7 @@ test("1 arg event action", async () => {
 });
 
 test("2 arg event action", async () => {
-    const eventAction = new EventActionTT<string, number>();
+    const eventAction = new EventAction<string, number>();
     let callCount = 0;
     let arg1Value = "";
     let arg2Value = 0;
