@@ -3,6 +3,10 @@
 My personal Typescript library.
 
 # Versions
+## 0.2.0 (WIP)
+### Changes
+- Removed `EventActionT` and `EventActionTT`. Replaced with `EventAction<T1 = void, T2 = void>`.
+
 ## 0.1.2
 Oops, been too long since last time I made a package 😂
 ### Changes
