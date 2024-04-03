@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { EventAction } from "../main";
+import { EventAction } from "..";
 
 test("No args event action", async () => {
     const eventAction = new EventAction();

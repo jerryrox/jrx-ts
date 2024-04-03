@@ -1,5 +1,5 @@
 import { expect, test } from "vitest";
-import { AsyncResponse, BaseApi } from "../main";
+import { AsyncResponse, BaseApi } from "..";
 
 class TestApi extends BaseApi<number> {
     public get genericErrorMessage(): string {
