@@ -3,6 +3,10 @@
 My personal Typescript library.
 
 # Versions
+## 0.2.1
+### Fixes
+- Fixed package not working for node environment.
+
 ## 0.2.0
 ### Changes
 - Removed `EventActionT` and `EventActionTT`. Replaced with `EventAction<T1 = void, T2 = void>`.
