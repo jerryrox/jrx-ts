@@ -3,6 +3,10 @@
 My personal Typescript library.
 
 # Versions
+## 0.2.2
+### Fixes
+- Fixed Vite library mode including external dependencies into the build.
+
 ## 0.2.1
 ### Fixes
 - Fixed package not working for node environment.
