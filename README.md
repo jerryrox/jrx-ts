@@ -3,7 +3,7 @@
 My personal Typescript library.
 
 # Versions
-## 0.2.3 (WIP)
+## 0.2.3
 ### New
 - Added `Color` data class.
 - Added `JrxMathUtils` class.
