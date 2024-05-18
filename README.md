@@ -3,6 +3,11 @@
 My personal Typescript library.
 
 # Versions
+## 0.2.3
+### New
+- Added `Color` data class.
+- Added `JrxMathUtils` class.
+
 ## 0.2.2
 ### Fixes
 - Fixed Vite library mode including external dependencies into the build.
