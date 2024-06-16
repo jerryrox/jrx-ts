@@ -42,4 +42,17 @@ export default class AsyncResponse<T = any> {
             undefined
         );
     }
+
+    static failedFromResponse<T>(
+        otherResponse: AsyncResponse,
+    ): AsyncResponse<T> {
+        return new AsyncResponse<T>(
+            false,
+            otherResponse.message,
+            otherResponse.code,
+            otherResponse.error,
+            otherResponse.errorParams,
+            undefined
+        );
+    }
 }

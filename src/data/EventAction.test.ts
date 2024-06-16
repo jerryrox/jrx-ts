@@ -39,27 +39,21 @@ test("1 arg event action", async () => {
     expect(argValue).toBe("test");
 });
 
-test("2 arg event action", async () => {
-    const eventAction = new EventAction<string, number>();
+test("Wait invocation", async () => {
+    const eventAction = new EventAction<string>();
     let callCount = 0;
-    let arg1Value = "";
-    let arg2Value = 0;
-    const callback = (arg1: string, arg2: number) => {
+    let argValue = "";
+    const callback = (arg: string) => {
         callCount++;
-        arg1Value = arg1;
-        arg2Value = arg2;
+        argValue = arg;
     };
     eventAction.add(callback);
     expect(callCount).toBe(0);
 
-    eventAction.invoke("test", 123);
+    const promise = eventAction.waitInvocation();
+    eventAction.invoke("test");
+    const result = await promise;
     expect(callCount).toBe(1);
-    expect(arg1Value).toBe("test");
-    expect(arg2Value).toBe(123);
-
-    eventAction.remove(callback);
-    eventAction.invoke("test2", 456);
-    expect(callCount).toBe(1);
-    expect(arg1Value).toBe("test");
-    expect(arg2Value).toBe(123);
+    expect(argValue).toBe("test");
+    expect(result).toBe("test");
 });

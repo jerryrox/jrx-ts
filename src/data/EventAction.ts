@@ -1,13 +1,13 @@
-import { ActionTT } from "../type/JrxTypes";
+import { ActionT } from "../type/JrxTypes";
 
-export default class EventAction<T1 = void, T2 = void> {
-    private readonly callbacks: (ActionTT<T1, T2> | undefined)[] = [];
+export default class EventAction<T = void> {
+    private readonly callbacks: (ActionT<T> | undefined)[] = [];
 
-    add(callback: ActionTT<T1, T2>): void {
+    add(callback: ActionT<T>): void {
         this.callbacks.push(callback);
     }
 
-    remove(callback: ActionTT<T1, T2>): void {
+    remove(callback: ActionT<T>): void {
         for (let i = 0; i < this.callbacks.length; i++) {
             if (this.callbacks[i] === callback) {
                 this.callbacks[i] = undefined;
@@ -16,7 +16,7 @@ export default class EventAction<T1 = void, T2 = void> {
         }
     }
 
-    invoke(t1: T1, t2: T2): void {
+    invoke(t: T): void {
         for (let i = 0; i < this.callbacks.length; i++) {
             const callback = this.callbacks[i];
             if (callback === undefined) {
@@ -24,7 +24,20 @@ export default class EventAction<T1 = void, T2 = void> {
                 i--;
                 continue;
             }
-            callback(t1, t2);
+            callback(t);
         }
+    }
+
+    /**
+     * Returns a promise that resolves only once the event is invoked.
+     */
+    waitInvocation(): Promise<T> {
+        return new Promise((resolve) => {
+            const callback = (t: T) => {
+                resolve(t);
+                this.remove(callback);
+            };
+            this.add(callback);
+        });
     }
 }

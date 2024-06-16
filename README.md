@@ -3,6 +3,12 @@
 My personal Typescript library.
 
 # Versions
+## 1.0.0
+### New
+- Added static constructor for `AsyncResponse` to change a failed response's generic type to another.
+### Changes
+- (Breaking) Changed `EventAction` to take only 1 generic argument.
+
 ## 0.2.3
 ### New
 - Added `Color` data class.
