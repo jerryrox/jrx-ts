@@ -37,3 +37,15 @@ test("Failed response", async () => {
     expect(response.error).toBe("Error");
     expect(response.errorParams).toEqual({ param: "value" });
 });
+
+test("Failed from another failed response", async () => {
+    const response1 = AsyncResponse.failed<string>("failed1");
+    const response2 = AsyncResponse.failedFromResponse<number>(response1);
+
+    expect(response2.isSuccess).toBe(false);
+    expect(response2.value).toBeUndefined();
+    expect(response2.message).toBe("failed1");
+    expect(response2.error).toBeUndefined();
+    expect(response2.code).toBeUndefined();
+    expect(response2.errorParams).toBeUndefined();
+});
